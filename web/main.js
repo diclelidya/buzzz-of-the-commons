@@ -7,6 +7,7 @@ import { PLYLoader } from 'three/addons/loaders/PLYLoader.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import GUI from 'three/addons/libs/lil-gui.module.min.js';
 import Stats from 'three/addons/libs/stats.module.js';
+import { addHouse, startAudio, updateSound, soundDebug } from './sound.js';
 
 const BG = 0x0B0820;
 const EYE_HEIGHT = 1.7;
@@ -62,6 +63,7 @@ pointMaterial.onBeforeCompile = (shader) => {
   shader.vertexShader = shader.vertexShader.replace('#include <color_vertex>',
     '#include <color_vertex>\n#ifdef USE_COLOR\n\tvColor.rgb = pow( vColor.rgb, vec3( 2.2 ) );\n#endif');
 };
+const pointMaterials = [pointMaterial];   // plus one per house (sound.js), for the size slider
 
 const variantNodes = { A: [], B: [] };
 const pointGeometries = [];   // every tile, for the point-fraction slider
@@ -247,6 +249,7 @@ async function loadAll() {
           points.add(tile);
           totalPoints += geometry.getAttribute('position').count;
         }
+        if (/^House_\d+_Shell$/.test(points.name)) pointMaterials.push(addHouse(points.name, points, pointMaterial));
         // Assumption: per-variant pipe vines follow the Variant_A / Variant_B toggles.
         if (name.startsWith('Vegetation_a__')) variantNodes.A.push(points);
         if (name.startsWith('Vegetation_b__')) variantNodes.B.push(points);
@@ -268,7 +271,10 @@ async function loadAll() {
 // --- first-person controls -----------------------------------------------------
 const controls = new PointerLockControls(camera, document.body);
 const overlay = document.getElementById('overlay');
-overlay.addEventListener('click', () => controls.lock());
+overlay.addEventListener('click', () => {
+  controls.lock();
+  startAudio();   // same click: audio may only start from a user gesture
+});
 controls.addEventListener('lock', () => overlay.classList.add('hidden'));
 controls.addEventListener('unlock', () => overlay.classList.remove('hidden'));
 
@@ -316,7 +322,7 @@ const info = { drawn: '' };
 const gui = new GUI({ title: 'Ayarlar' });
 gui.add(params, 'renderScale', 0.4, 1.5, 0.05).name('Çözünürlük').onChange((v) => { renderer.setPixelRatio(v); });
 gui.add(params, 'pointFraction', 0.1, 1, 0.05).name('Nokta oranı').onChange(applyPointFraction);
-gui.add(params, 'pointSize', 0.01, 0.5, 0.005).name('Nokta boyutu').onChange((v) => { pointMaterial.size = v; });
+gui.add(params, 'pointSize', 0.01, 0.5, 0.005).name('Nokta boyutu').onChange((v) => { for (const m of pointMaterials) m.size = v; });
 gui.add(params, 'fogDensity', 0, 0.05, 0.0005).name('Sis yoğunluğu').onChange((v) => { scene.fog.density = v; updateFar(); });
 gui.add(params, 'walkSpeed', 1, 15, 0.5).name('Yürüme hızı (m/s)');
 gui.add(params, 'variantA').name('Variant_A').onChange(applyVariants);
@@ -334,6 +340,7 @@ const clock = new THREE.Clock();
 renderer.setAnimationLoop(() => {
   const dt = Math.min(clock.getDelta(), 0.1);
   updateMovement(dt);
+  updateSound(camera, dt, clock.elapsedTime);
   renderer.render(scene, camera);
   // New tiles were drawn once unculled, so their buffers are uploaded and the CPU copy freed.
   for (const t of freshTiles) t.frustumCulled = true;
@@ -343,6 +350,6 @@ renderer.setAnimationLoop(() => {
 });
 
 // Exposed for debugging from the console.
-window.app = { scene, camera, controls, params, variantNodes, get collider() { return collider; } };
+window.app = { scene, camera, controls, params, variantNodes, sound: soundDebug, get collider() { return collider; } };
 
 loadAll();

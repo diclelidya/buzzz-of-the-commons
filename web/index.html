@@ -19,7 +19,15 @@
   #bar { height: 4px; background: rgba(255, 255, 255, 0.12); border-radius: 2px; overflow: hidden; margin-top: 6px; }
   #bar > div { height: 100%; width: 0; background: #f2a93b; transition: width 0.15s; }
   #status { font-size: 12px; opacity: 0.85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #hud { position: fixed; left: 8px; top: 56px; font-size: 12px; line-height: 1.5; white-space: pre;
+    background: rgba(11, 8, 32, 0.6); padding: 6px 8px; border-radius: 4px; pointer-events: none; }
+  #target { position: fixed; left: 50%; top: calc(50% + 22px); transform: translateX(-50%); text-align: center;
+    font-size: 13px; white-space: pre; pointer-events: none; text-shadow: 0 0 4px #0B0820; }
+  #target.over { color: #ff8a5c; }
+  #crosshair { position: fixed; left: 50%; top: 50%; width: 4px; height: 4px; margin: -2px 0 0 -2px;
+    border-radius: 50%; background: rgba(255, 255, 255, 0.8); pointer-events: none; }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
 <script type="importmap">
 {
   "imports": {
@@ -35,8 +43,12 @@
     <h1>The Buzzz of the Commons</h1>
     <p>Başlamak için tıkla</p>
     <p>WASD / oklar: yürü &nbsp;·&nbsp; Fare: bak &nbsp;·&nbsp; Shift: koş &nbsp;·&nbsp; Esc: duraklat</p>
+    <p>Bir eve bak: Q / E ya da tekerlek ile kullanımını değiştir (ses açılır)</p>
   </div>
 </div>
+<div id="hud"></div>
+<div id="target"></div>
+<div id="crosshair"></div>
 <div id="loading">
   <div id="status">Yükleniyor…</div>
   <div id="bar"><div></div></div>
