@@ -87,13 +87,14 @@ export function addHouse(name, group, baseMaterial) {
   const h = {
     name: name.replace(/_Shell$/, ''),
     centre: box.getCenter(new THREE.Vector3()),
-    sphere: box.getBoundingSphere(new THREE.Sphere()),
+    lookSphere: box.getBoundingSphere(new THREE.Sphere()),
     note: SCALE[Math.floor(Math.random() * SCALE.length)] + (3 + Math.floor(Math.random() * 3)),
     factor: 0.3 + Math.random() * 1.2,   // start usage = 0.3–1.5 x share
     usage: null,
     env: 0,
     uniforms,
   };
+  h.lookSphere.radius *= 0.6;   // the box sphere is loose (corners + roof); aim needs to be closer
   houses.push(h);
   if (audio) buildVoice(h);
   return material;
@@ -207,6 +208,7 @@ function showSupply() {
 }
 
 const fwd = new THREE.Vector3();
+const toCentre = new THREE.Vector3();
 const ray = new THREE.Ray();
 let hudClock = 0;
 
@@ -230,8 +232,13 @@ export function updateSound(camera, dt, time) {
     h.uniforms.uTime.value = time;
     h.uniforms.uAmp.value = 0.005 + h.env * 0.12;
     h.uniforms.uIrr.value = ratio > 1 ? Math.min(1, 0.3 + (ratio - 1) * 2) : 0;
-    const d = camera.position.distanceTo(h.centre);
-    if (d <= LOOK_RANGE && d < bestD && ray.intersectsSphere(h.sphere)) { best = h; bestD = d; }
+    // Centre must be in front: near a house the camera is inside its bounding sphere.
+    toCentre.subVectors(h.centre, camera.position);
+    const d = toCentre.length();
+    if (d <= LOOK_RANGE && d < bestD && toCentre.dot(fwd) > 0 && ray.intersectsSphere(h.lookSphere)) {
+      best = h;
+      bestD = d;
+    }
   }
   target = best;
 
