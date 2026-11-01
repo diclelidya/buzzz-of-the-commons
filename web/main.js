@@ -7,7 +7,7 @@ import { PLYLoader } from 'three/addons/loaders/PLYLoader.js';
 import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
 import GUI from 'three/addons/libs/lil-gui.module.min.js';
 import Stats from 'three/addons/libs/stats.module.js';
-import { addHouse, startAudio, updateSound, soundDebug } from './sound.js';
+import { addHouse, setHouseCount, startAudio, updateSound, soundDebug } from './sound.js';
 
 const BG = 0x0B0820;
 const EYE_HEIGHT = 1.7;
@@ -206,6 +206,7 @@ async function loadAll() {
   // The thinned deploy copy ships its own default (1.0 there looks like 0.5 on the full data).
   params.pointFraction = pointFraction;
   gui.controllersRecursive().forEach((c) => c.updateDisplay());
+  setHouseCount(manifest.filter((f) => /\/House_\d+_Shell\.ply$/.test(f.file)).length);
   const totalBytes = manifest.reduce((s, f) => s + f.bytes, 0);
   let loadedBytes = 0;
   const t0 = performance.now();

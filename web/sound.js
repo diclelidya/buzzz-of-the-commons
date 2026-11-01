@@ -25,7 +25,11 @@ function setSupply(place, wind, radiation, live) {
   if (before) for (const h of houses) if (h.usage !== null) h.usage *= share() / before;
 }
 
-function share() { return supply.kW / Math.max(1, houses.length); }
+// Fixed from the manifest, so houses that start before the rest have loaded get a fair share.
+let houseCount = 0;
+export function setHouseCount(n) { houseCount = n; }
+
+function share() { return supply.kW / Math.max(1, houseCount || houses.length); }
 function usageOf(h) {
   if (h.usage === null) h.usage = h.factor * share();
   return h.usage;
