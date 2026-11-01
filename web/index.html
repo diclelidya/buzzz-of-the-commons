@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Buzzz of the Commons</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0B0820; color: #e8e2ff;
+    font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  canvas { display: block; }
+  #overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: rgba(11, 8, 32, 0.55); cursor: pointer; text-align: center; }
+  #overlay.hidden { display: none; }
+  #overlay h1 { font-weight: 600; font-size: 28px; margin: 0 0 12px; letter-spacing: 0.02em; }
+  #overlay p { margin: 4px 0; opacity: 0.85; }
+  #loading { position: fixed; left: 0; right: 0; bottom: 0; padding: 8px 16px 12px;
+    background: rgba(11, 8, 32, 0.7); pointer-events: none; }
+  #loading.done { display: none; }
+  #bar { height: 4px; background: rgba(255, 255, 255, 0.12); border-radius: 2px; overflow: hidden; margin-top: 6px; }
+  #bar > div { height: 100%; width: 0; background: #f2a93b; transition: width 0.15s; }
+  #status { font-size: 12px; opacity: 0.85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<div id="overlay">
+  <div>
+    <h1>The Buzzz of the Commons</h1>
+    <p>Başlamak için tıkla</p>
+    <p>WASD / oklar: yürü &nbsp;·&nbsp; Fare: bak &nbsp;·&nbsp; Shift: koş &nbsp;·&nbsp; Esc: duraklat</p>
+  </div>
+</div>
+<div id="loading">
+  <div id="status">Yükleniyor…</div>
+  <div id="bar"><div></div></div>
+</div>
+<script type="module" src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+{
+ "pointFraction": 1.0,
+ "files": [
+  {
+   "file": "../solid/terrain_collider.glb",
+   "bytes": 164476,
+   "kind": "collider"
+  },
+  {
+   "file": "../pc_ply/GIS__GIS_Terrain_near.ply",
+   "bytes": 37731959
+  },
+  {
+   "file": "../pc_ply/Extra_01_Shell.ply",
+   "bytes": 614091
+  },
+  {
+   "file": "../pc_ply/Extra_02_Shell.ply",
+   "bytes": 1523122
+  },
+  {
+   "file": "../pc_ply/Extra_03_Shell.ply",
+   "bytes": 1614547
+  },
+  {
+   "file": "../pc_ply/Extra_04_Shell.ply",
+   "bytes": 899001
+  },
+  {
+   "file": "../pc_ply/Extra_05_Shell.ply",
+   "bytes": 1295691
+  },
+  {
+   "file": "../pc_ply/Extra_06_Shell.ply",
+   "bytes": 1372176
+  },
+  {
+   "file": "../pc_ply/Extra_07_Shell.ply",
+   "bytes": 2354047
+  },
+  {
+   "file": "../pc_ply/Extra_08_Shell.ply",
+   "bytes": 2260447
+  },
+  {
+   "file": "../pc_ply/Extra_09_Shell.ply",
+   "bytes": 1323081
+  },
+  {
+   "file": "../pc_ply/Extra_10_Shell.ply",
+   "bytes": 613971
+  },
+  {
+   "file": "../pc_ply/Extra_11_Shell.ply",
+   "bytes": 986436
+  },
+  {
+   "file": "../pc_ply/Extra_12_Shell.ply",
+   "bytes": 1614427
+  },
+  {
+   "file": "../pc_ply/House_01_Shell.ply",
+   "bytes": 1523092
+  },
+  {
+   "file": "../pc_ply/House_02_Shell.ply",
+   "bytes": 904911
+  },
+  {
+   "file": "../pc_ply/House_03_Shell.ply",
+   "bytes": 1593922
+  },
+  {
+   "file": "../pc_ply/House_04_Shell.ply",
+   "bytes": 1295871
+  },
+  {
+   "file": "../pc_ply/House_05_Shell.ply",
+   "bytes": 3424987
+  },
+  {
+   "file": "../pc_ply/House_06_Shell.ply",
+   "bytes": 1415526
+  },
+  {
+   "file": "../pc_ply/House_07_Shell.ply",
+   "bytes": 1322916
+  },
+  {
+   "file": "../pc_ply/House_08_Shell.ply",
+   "bytes": 1614382
+  },
+  {
+   "file": "../pc_ply/House_09_Shell.ply",
+   "bytes": 2354047
+  },
+  {
+   "file": "../pc_ply/House_10_Shell.ply",
+   "bytes": 613926
+  },
+  {
+   "file": "../pc_ply/House_11_Shell.ply",
+   "bytes": 830691
+  },
+  {
+   "file": "../pc_ply/House_12_Shell.ply",
+   "bytes": 986451
+  },
+  {
+   "file": "../solid/solid.glb",
+   "bytes": 22959476,
+   "kind": "solid"
+  },
+  {
+   "file": "../pc_ply/Garden_elements__Beds_Plants.ply",
+   "bytes": 1665411
+  },
+  {
+   "file": "../pc_ply/Garden_elements__Climbers.ply",
+   "bytes": 220997
+  },
+  {
+   "file": "../pc_ply/Garden_elements__Shrubs.ply",
+   "bytes": 1243725
+  },
+  {
+   "file": "../pc_ply/Garden_elements__Wildflowers_Purple.ply",
+   "bytes": 1764943
+  },
+  {
+   "file": "../pc_ply/Garden_elements__Wildflowers_Yellow.ply",
+   "bytes": 1670743
+  },
+  {
+   "file": "../pc_ply/Vegetation__Ground_Bracken.ply",
+   "bytes": 4329079
+  },
+  {
+   "file": "../pc_ply/Vegetation__Ground_Grass.ply",
+   "bytes": 5011352
+  },
+  {
+   "file": "../pc_ply/Vegetation__Ground_Heather.ply",
+   "bytes": 11976724
+  },
+  {
+   "file": "../pc_ply/Vegetation__Ground_Shrubs.ply",
+   "bytes": 18062359
+  },
+  {
+   "file": "../pc_ply/Vegetation__Pipe_Moss.ply",
+   "bytes": 70857
+  },
+  {
+   "file": "../pc_ply/Vegetation__Pipe_Vines.ply",
+   "bytes": 1144724
+  },
+  {
+   "file": "../pc_ply/Vegetation__Pipe_Vines_Stems.ply",
+   "bytes": 132244
+  },
+  {
+   "file": "../pc_ply/Vegetation_a__Pipe_Vines.ply",
+   "bytes": 3063977
+  },
+  {
+   "file": "../pc_ply/Vegetation_a__Pipe_Vines_Light.ply",
+   "bytes": 404587
+  },
+  {
+   "file": "../pc_ply/Vegetation_a__Pipe_Vines_Stems.ply",
+   "bytes": 143571
+  },
+  {
+   "file": "../pc_ply/Vegetation_b__Pipe_Vines.ply",
+   "bytes": 2998277
+  },
+  {
+   "file": "../pc_ply/Vegetation_b__Pipe_Vines_Light.ply",
+   "bytes": 394537
+  },
+  {
+   "file": "../pc_ply/Vegetation_b__Pipe_Vines_Stems.ply",
+   "bytes": 139041
+  },
+  {
+   "file": "../pc_ply/GIS_Buildings.ply",
+   "bytes": 1217029
+  },
+  {
+   "file": "../pc_ply/Landscape__River_Banks.ply",
+   "bytes": 5594879
+  },
+  {
+   "file": "../pc_ply/Landscape__Road_Verges.ply",
+   "bytes": 2764589
+  },
+  {
+   "file": "../pc_ply/Landscape__Roads.ply",
+   "bytes": 1776263
+  },
+  {
+   "file": "../pc_ply/Landscape__Water_Lakes.ply",
+   "bytes": 743833
+  },
+  {
+   "file": "../pc_ply/Landscape__Water_Rivers.ply",
+   "bytes": 2885055
+  },
+  {
+   "file": "../pc_ply/Vegetation__Forest_Conifers.ply",
+   "bytes": 9877713
+  },
+  {
+   "file": "../pc_ply/Vegetation__Forest_Crowns.ply",
+   "bytes": 27371027
+  },
+  {
+   "file": "../pc_ply/Vegetation__Forest_Trunks.ply",
+   "bytes": 4395212
+  },
+  {
+   "file": "../pc_ply/GIS__GIS_Terrain_far.ply",
+   "bytes": 16335807
+  }
+ ]
+}
